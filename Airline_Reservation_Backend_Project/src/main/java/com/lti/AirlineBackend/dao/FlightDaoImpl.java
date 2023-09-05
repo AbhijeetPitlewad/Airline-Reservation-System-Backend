@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.lti.AirlineBackend.entity.Flight;
+import com.lti.AirlineBackend.excep.NoFlightFoundException;
 
 @Repository
 public class FlightDaoImpl implements  FlightDao{
@@ -27,6 +28,9 @@ public class FlightDaoImpl implements  FlightDao{
 	@Override
 	public Flight getFlightByflightNumber(int flightNumber) {
 		Flight flight1=em.find(Flight.class, flightNumber);
+//		if(flight1==null) {
+//			throw new NoFlightFoundException("Flight Not Found");
+//		}
 		return flight1;
 	}
 

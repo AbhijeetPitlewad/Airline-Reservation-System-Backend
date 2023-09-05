@@ -25,8 +25,12 @@ public class UserController {
 	
 	@GetMapping("/{userEmail}")
 	
-	public User findUser(@PathVariable("userEmail")String userEmail) {
-		return UserService.findUser(userEmail);
+	public User findUser(@PathVariable("userEmail")String userEmail) throws Exception {
+		User user=UserService.findUser(userEmail);
+		if(user==null){
+            throw new Exception("User not Found");
+        }
+		return user;
 	}
 	
 	

@@ -3,10 +3,13 @@ package com.lti.AirlineBackend.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,15 +17,15 @@ import javax.persistence.Table;
 public class Ticket {
 	
 	@Id
+	@SequenceGenerator(name = "ticket_id_generator", 
+    sequenceName = "ticket_sequence", 
+    initialValue = 1000, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticket_id_generator")
 	private int ticketNumber;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="FK_User_UserEmail")
-	private User user;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="FK_Flight_FlightNumber")
-	private Flight flight;
+	
+	
 	@Column(length=20)
 	private String classType;
 	private int seatNumber;
@@ -30,6 +33,15 @@ public class Ticket {
 	private String status;
 	@Column(length=20)
 	private String flightDate;
+	@ManyToOne
+	@JoinColumn(name="userEmail")
+	private User user;
+	@ManyToOne
+	@JoinColumn(name="flightNumber")
+	private Flight flight;
+	@OneToOne
+	@JoinColumn(name="paymentId")
+	private Payment payment;
 	
 	public String getFlightDate() {
 		return flightDate;
@@ -39,8 +51,7 @@ public class Ticket {
 		this.flightDate = flightDate;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private Payment payment;
+	
 
 	public int getTicketNumber() {
 		return ticketNumber;

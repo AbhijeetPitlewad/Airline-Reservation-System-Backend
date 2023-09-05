@@ -4,7 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +15,10 @@ import javax.persistence.Table;
 public class Payment {
 	
 	@Id
+	@SequenceGenerator(name = "payment_id_generator", 
+    sequenceName = "payment_sequence", 
+    initialValue = 2000, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payment_id_generator")
 	private int paymentId;
 	private double amount;
 	@Column(length=20)

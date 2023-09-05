@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.AirlineBackend.dao.FlightDao;
 import com.lti.AirlineBackend.entity.Flight;
+import com.lti.AirlineBackend.excep.NoFlightFoundException;
 
 @Service("flightService")
 public class FlightServiceImpl implements FlightService {
@@ -21,8 +22,14 @@ public class FlightServiceImpl implements FlightService {
 	}
 
 	@Override
-	public Flight getFlightByflightNumber(int flightNumber) {
-		Flight flight1=flightdao.getFlightByflightNumber(flightNumber);
+	public Flight getFlightByflightNumber(int flightNumber)  {
+		Flight flight1=flight1 = flightdao.getFlightByflightNumber(flightNumber);
+//		try {
+//			flight1 = flightdao.getFlightByflightNumber(flightNumber);
+//		} catch (NoFlightFoundException e) {
+//			
+//			e.printStackTrace();
+//		}
 		return flight1;
 	}
 

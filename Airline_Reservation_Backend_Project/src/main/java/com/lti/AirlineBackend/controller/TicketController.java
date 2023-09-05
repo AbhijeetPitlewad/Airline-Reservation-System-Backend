@@ -1,10 +1,13 @@
 package com.lti.AirlineBackend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,10 +43,20 @@ public class TicketController {
 	}
 	
 	//http://localhost:8282/ticket/cancelticket/0
-	@GetMapping("/cancelticket/{ticketId}")
+	@PutMapping("/cancelticket/{ticketId}")
 	public Ticket cancelTicket(@PathVariable("ticketId") int ticketId){
 		return ticketService.cancelTicket(ticketId);
 		
 	}
+	
+	 //http://localhost:8282/ticket/getTickets/userEmail
+    @GetMapping("/getTickets/{userEmail}")
+    public List<Ticket> getTicketDetailsByUserEmail(@PathVariable("userEmail") String userEmail )
+    {
+        //Ticket payment = ticketService.getTicketDetailsByUserEmail(userEmail) ;
+        List<Ticket> tickets= ticketService.getTicketDetailsByUserEmail(userEmail);
+        
+        return tickets;
+    }
 
 }

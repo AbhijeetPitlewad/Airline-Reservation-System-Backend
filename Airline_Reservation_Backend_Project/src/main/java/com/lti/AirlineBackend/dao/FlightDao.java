@@ -3,6 +3,7 @@ package com.lti.AirlineBackend.dao;
 import java.util.List;
 
 import com.lti.AirlineBackend.entity.Flight;
+import com.lti.AirlineBackend.excep.NoFlightFoundException;
 
 public interface FlightDao {
 

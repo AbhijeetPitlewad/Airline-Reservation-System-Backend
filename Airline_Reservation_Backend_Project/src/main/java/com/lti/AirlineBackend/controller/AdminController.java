@@ -23,8 +23,11 @@ public class AdminController {
 	
 	//http://localhost:8282/admin/abhi@123
 	@GetMapping("/{adminUserName}")
-	public Admin findAdminByUserName(@PathVariable("adminUserName") String adminUserName) {
+	public Admin findAdminByUserName(@PathVariable("adminUserName") String adminUserName) throws Exception {
 		Admin admin= adminService.findAdminByUserName(adminUserName);
+		if(admin==null){
+            throw new Exception("admin not found");
+        }
 		return admin;
 	}
 	

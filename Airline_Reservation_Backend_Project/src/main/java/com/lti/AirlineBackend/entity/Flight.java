@@ -23,7 +23,7 @@ public class Flight {
 	private String flightArrival;
 	@Column(length=20)
 	private String flightDeparture;
-	private int flighDuration;
+	private int flightDuration;
 	private int numberOfEs; //Economy Seats
 	private int numberOfBs; //Bussiness Seats
 	private int esPrice; //economy seats
@@ -37,7 +37,7 @@ public class Flight {
 	public String toString() {
 		return "Flight [flightNumber=" + flightNumber + ", flightName=" + flightName + ", flightFrom=" + flightFrom
 				+ ", flightTo=" + flightTo + ", flightArrival=" + flightArrival + ", flightDeparture=" + flightDeparture
-				+ ", flighDuration=" + flighDuration + ", numberOfEs=" + numberOfEs + ", numberOfBs=" + numberOfBs
+				+ ", flightDuration=" + flightDuration + ", numberOfEs=" + numberOfEs + ", numberOfBs=" + numberOfBs
 				+ ", esPrice=" + esPrice + ", bsPrice=" + bsPrice + "]";
 	}
 
@@ -89,12 +89,12 @@ public class Flight {
 		this.flightDeparture = flightDeparture;
 	}
 
-	public int getFlighDuration() {
-		return flighDuration;
+	public int getflightDuration() {
+		return flightDuration;
 	}
 
-	public void setFlighDuration(int flighDuration) {
-		this.flighDuration = flighDuration;
+	public void setflightDuration(int flightDuration) {
+		this.flightDuration = flightDuration;
 	}
 
 	public int getNumberOfEs() {
@@ -130,7 +130,7 @@ public class Flight {
 	}
 
 	public Flight(int flightNumber, String flightName, String flightFrom, String flightTo, String flightArrival,
-			String flightDeparture, int flighDuration, int numberOfEs, int numberOfBs, int esPrice, int bsPrice) {
+			String flightDeparture, int flightDuration, int numberOfEs, int numberOfBs, int esPrice, int bsPrice) {
 		super();
 		this.flightNumber = flightNumber;
 		this.flightName = flightName;
@@ -138,7 +138,7 @@ public class Flight {
 		this.flightTo = flightTo;
 		this.flightArrival = flightArrival;
 		this.flightDeparture = flightDeparture;
-		this.flighDuration = flighDuration;
+		this.flightDuration = flightDuration;
 		this.numberOfEs = numberOfEs;
 		this.numberOfBs = numberOfBs;
 		this.esPrice = esPrice;

@@ -1,5 +1,7 @@
 package com.lti.AirlineBackend.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,11 @@ public class TicketServiceImpl implements TicketService {
 		Ticket ticket=ticketDao.cancelTicket(ticketId);
 		return ticket;
 	}
+	
+	@Override
+    public List<Ticket> getTicketDetailsByUserEmail(String userEmail) {
+        List<Ticket> ticketList=ticketDao.getTicketDetailsByUserEmail(userEmail);
+        return ticketList;
+    }
 
 }
